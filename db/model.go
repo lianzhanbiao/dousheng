@@ -21,7 +21,7 @@ type Comment struct {
 
 type User struct {
 	gorm.Model
-	Name          string `json:"name,omitempty"`
+	Username      string `json:"username,omitempty"`
 	Password      string `json:"password,omitempty"`
 	Token         string `json:"token,omitempty"`
 	FollowCount   int64  `json:"follow_count,omitempty"`

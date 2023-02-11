@@ -41,7 +41,7 @@ func Register(c *gin.Context) {
 	result := db.DB.Where("username = ?", username).First(&user)
 	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 		newUser := db.User{
-			Name:     username,
+			Username: username,
 			Password: password,
 			Token:    token,
 		}
