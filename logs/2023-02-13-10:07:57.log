@@ -1,0 +1,63 @@
+
+2023/02/13 10:07:57 /home/biao/go/pkg/mod/gorm.io/driver/mysql@v1.3.3/migrator.go:228
+[0.298ms] [rows:-] SELECT DATABASE()
+
+2023/02/13 10:07:57 /home/biao/go/pkg/mod/gorm.io/driver/mysql@v1.3.3/migrator.go:231
+[1.714ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'douyin%' ORDER BY SCHEMA_NAME='douyin' DESC limit 1
+
+2023/02/13 10:07:57 /home/biao/workspace/go-projects/douyin-fighting/initialize/mysql.go:54
+[1.362ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'douyin' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2023/02/13 10:07:57 /home/biao/workspace/go-projects/douyin-fighting/initialize/mysql.go:54
+[19.972ms] [rows:0] CREATE TABLE `users` (`user_id` bigint unsigned AUTO_INCREMENT NOT NULL,`name` varchar(256) NOT NULL,`password` varchar(256) NOT NULL,`created_at` datetime(3) NULL,`ext_info` varchar(256),PRIMARY KEY (`user_id`))ENGINE=InnoDB
+
+2023/02/13 10:07:57 /home/biao/go/pkg/mod/gorm.io/driver/mysql@v1.3.3/migrator.go:228
+[0.390ms] [rows:-] SELECT DATABASE()
+
+2023/02/13 10:07:57 /home/biao/go/pkg/mod/gorm.io/driver/mysql@v1.3.3/migrator.go:231
+[0.917ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'douyin%' ORDER BY SCHEMA_NAME='douyin' DESC limit 1
+
+2023/02/13 10:07:57 /home/biao/workspace/go-projects/douyin-fighting/initialize/mysql.go:55
+[1.009ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'douyin' AND table_name = 'videos' AND table_type = 'BASE TABLE'
+
+2023/02/13 10:07:57 /home/biao/workspace/go-projects/douyin-fighting/initialize/mysql.go:55
+[25.835ms] [rows:0] CREATE TABLE `videos` (`video_id` bigint unsigned AUTO_INCREMENT NOT NULL,`title` varchar(256) NOT NULL,`play_name` varchar(256) NOT NULL,`cover_name` varchar(256) NOT NULL,`author_id` bigint unsigned NOT NULL,`created_at` datetime(3) NULL,`ext_info` varchar(256),PRIMARY KEY (`video_id`),INDEX idx_videos_author_id (`author_id`),INDEX idx_videos_created_at (`created_at`))ENGINE=InnoDB
+
+2023/02/13 10:07:57 /home/biao/go/pkg/mod/gorm.io/driver/mysql@v1.3.3/migrator.go:228
+[0.400ms] [rows:-] SELECT DATABASE()
+
+2023/02/13 10:07:57 /home/biao/go/pkg/mod/gorm.io/driver/mysql@v1.3.3/migrator.go:231
+[0.902ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'douyin%' ORDER BY SCHEMA_NAME='douyin' DESC limit 1
+
+2023/02/13 10:07:57 /home/biao/workspace/go-projects/douyin-fighting/initialize/mysql.go:56
+[1.009ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'douyin' AND table_name = 'favorites' AND table_type = 'BASE TABLE'
+
+2023/02/13 10:07:57 /home/biao/workspace/go-projects/douyin-fighting/initialize/mysql.go:56
+[27.021ms] [rows:0] CREATE TABLE `favorites` (`favorite_id` bigint unsigned AUTO_INCREMENT NOT NULL,`video_id` bigint unsigned NOT NULL,`user_id` bigint unsigned NOT NULL,`is_favorite` boolean NOT NULL,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,PRIMARY KEY (`favorite_id`),INDEX idx_02 (`video_id`),INDEX idx_01 (`user_id`,`video_id`))ENGINE=InnoDB
+
+2023/02/13 10:07:57 /home/biao/go/pkg/mod/gorm.io/driver/mysql@v1.3.3/migrator.go:228
+[0.367ms] [rows:-] SELECT DATABASE()
+
+2023/02/13 10:07:57 /home/biao/go/pkg/mod/gorm.io/driver/mysql@v1.3.3/migrator.go:231
+[0.894ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'douyin%' ORDER BY SCHEMA_NAME='douyin' DESC limit 1
+
+2023/02/13 10:07:57 /home/biao/workspace/go-projects/douyin-fighting/initialize/mysql.go:57
+[1.094ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'douyin' AND table_name = 'comments' AND table_type = 'BASE TABLE'
+
+2023/02/13 10:07:57 /home/biao/workspace/go-projects/douyin-fighting/initialize/mysql.go:57
+[21.758ms] [rows:0] CREATE TABLE `comments` (`comment_id` bigint unsigned AUTO_INCREMENT NOT NULL,`video_id` bigint unsigned NOT NULL,`user_id` bigint unsigned NOT NULL,`content` varchar(256) NOT NULL,`created_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,PRIMARY KEY (`comment_id`),INDEX video_user (`video_id`,`user_id`))ENGINE=InnoDB
+
+2023/02/13 10:07:57 /home/biao/go/pkg/mod/gorm.io/driver/mysql@v1.3.3/migrator.go:228
+[0.386ms] [rows:-] SELECT DATABASE()
+
+2023/02/13 10:07:57 /home/biao/go/pkg/mod/gorm.io/driver/mysql@v1.3.3/migrator.go:231
+[0.835ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'douyin%' ORDER BY SCHEMA_NAME='douyin' DESC limit 1
+
+2023/02/13 10:07:57 /home/biao/workspace/go-projects/douyin-fighting/initialize/mysql.go:58
+[0.939ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'douyin' AND table_name = 'follows' AND table_type = 'BASE TABLE'
+
+2023/02/13 10:07:57 /home/biao/workspace/go-projects/douyin-fighting/initialize/mysql.go:58
+[25.238ms] [rows:0] CREATE TABLE `follows` (`follow_id` bigint unsigned AUTO_INCREMENT NOT NULL,`celebrity_id` bigint unsigned NOT NULL,`follower_id` bigint unsigned NOT NULL,`is_follow` boolean NOT NULL,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,PRIMARY KEY (`follow_id`),INDEX idx_01 (`follower_id`,`celebrity_id`),INDEX idx_02 (`celebrity_id`))ENGINE=InnoDB
+
+2023/02/13 10:07:57 /home/biao/workspace/go-projects/douyin-fighting/service/video_redis.go:47
+[2.433ms] [rows:0] SELECT * FROM `videos`
